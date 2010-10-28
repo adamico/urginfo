@@ -14,6 +14,7 @@ gem "simple_form"
 gem 'will_paginate', '3.0.pre2'
 gem 'ancestry'
 gem 'state_machine'
+gem 'has_many_polymorphs', :git => 'http://github.com/jystewart/has_many_polymorphs.git'
 
 gem 'pg', :group => :production
 

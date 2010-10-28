@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101028094253) do
+ActiveRecord::Schema.define(:version => 20101028142006) do
 
   create_table "infos", :force => true do |t|
     t.string   "name"
@@ -21,5 +21,35 @@ ActiveRecord::Schema.define(:version => 20101028094253) do
   end
 
   add_index "infos", ["ancestry"], :name => "index_infos_on_ancestry"
+
+  create_table "infos_items", :force => true do |t|
+    t.integer "item_id"
+    t.string  "item_type"
+    t.integer "info_id"
+  end
+
+  create_table "locations", :force => true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "country"
+    t.string   "cp"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "phones", :force => true do |t|
+    t.string   "name"
+    t.string   "number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "websites", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

@@ -1,7 +1,12 @@
 class Info < ActiveRecord::Base
-  has_ancestry
   attr_accessible :name, :state_event
   validates :name, :presence => true, :uniqueness => true
+
+  has_ancestry
+
+  #has many polymorph section
+  has_many_polymorphs :items, :from => [:phones, :locations, :websites],
+    :dependent => :destroy
 
   state_machine :initial => :draft do
     #TODO add one or more date fields for infos validity duration calculations
