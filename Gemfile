@@ -13,6 +13,7 @@ gem "meta_where"
 gem "simple_form"
 gem 'will_paginate', '3.0.pre2'
 gem 'ancestry'
+gem 'state_machine'
 
 gem 'pg', :group => :production
 
