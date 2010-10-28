@@ -1,4 +1,5 @@
 Urginfo::Application.routes.draw do
+  resources :infos
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

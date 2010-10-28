@@ -6,12 +6,15 @@ Feature: Manage infos
   Scenario: Register new info
     Given I am on the new info page
     When I fill in "Name" with "name 1"
-    And I fill in "State" with "state 1"
-    And I fill in "Ancestry" with "ancestry 1"
     And I press "Create"
     Then I should see "name 1"
-    And I should see "state 1"
-    And I should see "ancestry 1"
+
+  Scenario: update existing info
+    Given a info exists
+    When I go to the info's edit page
+    And I fill in "Name" with "new name"
+    And I press "Update"
+    Then I should see "new name"
 
   # Rails generates Delete links that use Javascript to pop up a confirmation
   # dialog and then do a HTTP POST request (emulated DELETE request).
@@ -38,14 +41,14 @@ Feature: Manage infos
   #
   Scenario: Delete info
     Given the following infos:
-      |name|state|ancestry|
-      |name 1|state 1|ancestry 1|
-      |name 2|state 2|ancestry 2|
-      |name 3|state 3|ancestry 3|
-      |name 4|state 4|ancestry 4|
+      |name|
+      |name 1|
+      |name 2|
+      |name 3|
+      |name 4|
     When I delete the 3rd info
     Then I should see the following infos:
-      |Name|State|Ancestry|
-      |name 1|state 1|ancestry 1|
-      |name 2|state 2|ancestry 2|
-      |name 4|state 4|ancestry 4|
+      |Name|
+      |name 1|
+      |name 2|
+      |name 4|

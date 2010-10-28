@@ -1,0 +1,18 @@
+- title "Info"
+
+%p
+  %strong Name:
+  = @info.name
+%p
+  %strong State:
+  = @info.state
+%p
+  %strong Ancestry:
+  = @info.ancestry
+
+%p
+  = link_to "Edit", edit_info_path(@info)
+  |
+  = link_to "Destroy", @info, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", infos_path
