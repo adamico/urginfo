@@ -1,11 +1,11 @@
 class Info < ActiveRecord::Base
   has_ancestry
-  attr_accessible :name
+  attr_accessible :name, :state_event
   validates :name, :presence => true, :uniqueness => true
 
   state_machine :initial => :draft do
     #TODO add one or more date fields for infos validity duration calculations
-    event :confirm do
+    event :publish do
       transition [:draft, :pending] => :published
     end
     event :put_aside do

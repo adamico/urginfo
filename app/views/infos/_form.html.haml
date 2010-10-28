@@ -7,6 +7,10 @@
           %li= msg
 
   .field
+    = f.label :state
+    = f.collection_select :state_event, @info.state_transitions,
+      :event, :human_to_name, :include_blank => @info.human_state_name
+  .field
     = f.label :name
     = f.text_field :name
   .actions

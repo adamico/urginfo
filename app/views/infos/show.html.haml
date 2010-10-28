@@ -3,12 +3,13 @@
 %p
   %strong Name:
   = @info.name
-%p
-  %strong State:
-  = @info.state
-%p
-  %strong Ancestry:
-  = @info.ancestry
+
+= form_for @info do |f|
+  .field
+    = f.label :state
+    = f.collection_select :state_event, @info.state_transitions,
+      :event, :human_to_name, :include_blank => @info.human_state_name
+    = f.submit "Update state"
 
 %p
   = link_to "Edit", edit_info_path(@info)

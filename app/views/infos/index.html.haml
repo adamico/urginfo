@@ -1,16 +1,13 @@
 - title "Infos"
 
-%table
+%table.infos
   %tr
     %th Name
     %th State
-    %th Ancestry
   - for info in @infos
     %tr
-      %td= info.name
-      %td= info.state
-      %td= info.ancestry
-      %td= link_to 'Show', info
+      %td= link_to info.name, info
+      %td.state{:class => "#{info.state}"}= info.state
       %td= link_to 'Edit', edit_info_path(info)
       %td= link_to 'Destroy', info, :confirm => 'Are you sure?', :method => :delete
 
