@@ -3,10 +3,13 @@
 %table.infos
   %tr
     %th Name
+    %th Ancestors
     %th State
   - for info in @infos
     %tr
       %td= link_to info.name, info
+      %td.breadcrumb
+        - breadcrumb(info, with_self = false)
       %td.state{:class => "#{info.state}"}= info.state
       %td= link_to 'Edit', edit_info_path(info)
       %td= link_to 'Destroy', info, :confirm => 'Are you sure?', :method => :delete

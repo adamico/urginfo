@@ -9,15 +9,32 @@ Feature: manage infos tree
     And I follow "Create child"
     And I create a valid info
     Then the info should have 1 children
-    And I should see "Parent: parent info"
 
-  Scenario: show parent field in info page
-    Given an info exists with name: "parent info"
-    And another info exists with parent: the info
+  Scenario: show breadcrumb for infos with ancestors
+    Given an info exists with name: "parent"
+    And another info exists with parent: the info, name: "child"
     When I go to the 2nd info page
-    Then I should see "Parent: parent info"
+    Then I should see "parent > child"
 
-  Scenario: hide parent field for root infos
+  Scenario: show breadcrumb without self in infos list
+    Given an info exists with name: "parent"
+    And another info exists with parent: the info, name: "child"
+    And another info exists with parent: the 2nd info, name: "gchild"
+    When I go to the infos page
+    Then I should see the following infos:
+      |Name  |Ancestors     |
+      |parent|              |
+      |child |parent        |
+      |gchild|parent > child|
+
+  Scenario: show info children
     Given an info exists
-    When I go to the info page
-    Then I should not see "Parent:"
+    And another info exists with parent: the info, name: "child"
+    When I go to the first info's page
+    Then I should see "child"
+
+  Scenario: show edit link for children info
+    Given an info exists
+    And another info exists with parent: the info
+    When I go to the first info's page
+    Then I should see "Edit this child"

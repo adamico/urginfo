@@ -1,15 +1,13 @@
-- title "Info"
+- title @info.name
+
+- breadcrumb(@info)
 
 %p
-  %strong Name:
-  = @info.name
-
-%p
-  - if @info.parent
-    %strong Parent:
-    = @info.parent.name
-  - else
-    %pre.debug_dump= "Root info node" if Rails.env.development?
+  = link_to "Edit", edit_info_path(@info)
+  |
+  = link_to "Destroy", @info, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", infos_path
 
 = form_for @info do |f|
   .field
@@ -18,12 +16,15 @@
       :event, :human_to_name, :include_blank => @info.human_state_name
     = f.submit "Update state"
 
-%p
-  = link_to "Create child", new_info_path(:parent => @info)
+- unless @info.children.empty?
+  %ul
+    - @info.children.each do |child|
+      %li
+        %table.children
+          %tr
+            %td
+              = link_to_if(!child.children.empty?, child.name, child) do
+                = link_to child.name, "#"
+            %td= link_to "Edit this child", edit_info_path(child)
 
-%p
-  = link_to "Edit", edit_info_path(@info)
-  |
-  = link_to "Destroy", @info, :confirm => 'Are you sure?', :method => :delete
-  |
-  = link_to "View All", infos_path
+%p= link_to "Create child", new_info_path(:parent => @info)
