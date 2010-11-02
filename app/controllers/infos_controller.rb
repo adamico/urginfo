@@ -9,6 +9,7 @@ class InfosController < ApplicationController
 
   def new
     @info = Info.new
+    @parent = Info.find(params[:parent]) if params[:parent]
   end
 
   def create
@@ -23,6 +24,7 @@ class InfosController < ApplicationController
 
   def edit
     @info = Info.find(params[:id])
+    @parent = @info.is_root? ? nil : @info.parent
   end
 
   def update

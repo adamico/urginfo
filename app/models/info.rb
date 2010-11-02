@@ -1,5 +1,5 @@
 class Info < ActiveRecord::Base
-  attr_accessible :name, :state_event
+  attr_accessible :name, :state_event, :parent_id
   validates :name, :presence => true, :uniqueness => true
 
   has_ancestry

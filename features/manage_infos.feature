@@ -2,7 +2,7 @@ Feature: Manage infos
   In order to find useful infos for users
   Admin
   wants to manage infos
-  
+
   Scenario: Register new info
     Given I am on the new info page
     When I fill in "Name" with "name 1"
