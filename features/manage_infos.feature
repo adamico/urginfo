@@ -6,11 +6,10 @@ Feature: Manage infos
   Background:
     Given a category exists
 
-  Scenario: Register new info
+  Scenario: create new info
     When I go to the category's page
     And I follow "New info"
-    When I fill in "Name" with "name 1"
-    And I press "Create"
+    And I create a valid info
     Then I should see "name 1"
 
   Scenario: update existing info
@@ -29,8 +28,4 @@ Feature: Manage infos
       |name 4| the category|
     When I go to the category's page
     And I delete the 3rd info
-    Then I should see the following infos:
-      |Name|
-      |name 1|
-      |name 2|
-      |name 4|
+    Then I should not see "name 3"

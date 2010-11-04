@@ -3,6 +3,29 @@ Feature: manage categories
   Admin
   wants to organize categories
 
+  Scenario: create new category
+    When I go to the new category page
+    And I create a valid category
+    Then I should see "name 1"
+
+  Scenario: update existing category
+    Given a category exists
+    When I go to the category's edit page
+    And I fill in "Name" with "new name"
+    And I press "Update"
+    Then I should see "new name"
+
+  Scenario: Delete category
+    Given the following categories exist:
+      |name|
+      |name 1|
+      |name 2|
+      |name 3|
+      |name 4|
+    When I go to the categories page
+    And I delete the 3rd category
+    Then I should not see "name 3"
+
   Scenario: create child category
     Given an category exists
     When I go to the category's page

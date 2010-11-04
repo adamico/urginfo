@@ -2,13 +2,12 @@
 
 - breadcrumb(@category)
 
-= link_to 'Edit', edit_category_path(@category)
-\|
-= link_to "Destroy", @category, :confirm => 'Are you sure?', :method => :delete
-\|
-= link_to 'Back', categories_path
-
-%p= link_to "Create child", new_category_path(:parent => @category)
+%p
+  = link_to 'Edit', edit_category_path(@category)
+  \|
+  = link_to "Destroy", @category, :confirm => 'Are you sure?', :method => :delete
+  \|
+  = link_to 'Back', categories_path
 
 - unless @category.children.empty?
   %table.children
@@ -17,16 +16,13 @@
         %td= link_to child.name, child
         %td= link_to "Edit this child", edit_category_path(child)
 
+%p= link_to "Create child", new_category_path(:parent => @category)
+
 - if @category.infos.empty?
   - if Rails.env.development?
     %pre.debug_dump No infos for this category
 - else
   %table.infos
-    %tr
-      %th Name
-      %th State
-      %th
-      %th
     - @category.infos.each do |info|
       %tr
         %td= link_to info.name, info
