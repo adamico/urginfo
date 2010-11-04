@@ -40,7 +40,6 @@ unless ENV.has_key?('SSH_CLIENT')
   group :test do
     gem 'factory_girl_rails'
     gem 'spork'
-    gem "mocha"
   end
 
   group :cucumber do
