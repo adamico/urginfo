@@ -2,6 +2,8 @@ class Info < ActiveRecord::Base
   attr_accessible :name, :state_event
   validates :name, :presence => true, :uniqueness => true
 
+  belongs_to :category
+
   #has many polymorph section
   has_many_polymorphs :items, :from => [:phones, :locations, :websites],
     :dependent => :destroy

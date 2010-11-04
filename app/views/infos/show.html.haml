@@ -5,7 +5,7 @@
   |
   = link_to "Destroy", @info, :confirm => 'Are you sure?', :method => :delete
   |
-  = link_to "View All", infos_path
+  = link_to "Back", category_infos_path(@info.category)
 
 = form_for @info do |f|
   .field

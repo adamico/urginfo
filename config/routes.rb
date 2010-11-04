@@ -1,9 +1,10 @@
 Urginfo::Application.routes.draw do
-  resources :categories
+  resources :infos, :only => :index
+  resources :categories, :shallow => true do
+    resources :infos
+  end
 
-  resources :infos
-
-  root :to => "infos#index"
+  root :to => "categories#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

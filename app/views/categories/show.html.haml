@@ -11,12 +11,27 @@
 %p= link_to "Create child", new_category_path(:parent => @category)
 
 - unless @category.children.empty?
-  %ul
+  %table.children
     - @category.children.each do |child|
-      %li
-        %table.children
-          %tr
-            %td
-              = link_to_if(!child.children.empty?, child.name, child) do
-                = link_to child.name, "#"
-            %td= link_to "Edit this child", edit_category_path(child)
+      %tr
+        %td= link_to child.name, child
+        %td= link_to "Edit this child", edit_category_path(child)
+
+- if @category.infos.empty?
+  - if Rails.env.development?
+    %pre.debug_dump No infos for this category
+- else
+  %table.infos
+    %tr
+      %th Name
+      %th State
+      %th
+      %th
+    - @category.infos.each do |info|
+      %tr
+        %td= link_to info.name, info
+        %td.state{:class => "#{info.state}"}= info.state
+        %td= link_to 'Edit', edit_info_path(info)
+        %td= link_to 'Destroy', info, :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to "New info", new_category_info_path(@category)

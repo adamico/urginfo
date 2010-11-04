@@ -3,8 +3,11 @@ Feature: manage info states
   Admin
   wants to manage infos publication states
 
+  Background:
+    Given a category exists
+
   Scenario Outline: publish draft infos
-    Given <info> exists
+    Given <info> exists with category: the category
     When I go to the info's page
     And I select "published" from "info_state_event"
     And I press "Update state"
@@ -15,16 +18,16 @@ Feature: manage info states
       | a pending_info|
 
   Scenario: put aside published infos
-    Given a published_info exists
+    Given a published_info exists with category: the category
     When I go to the info's page
     And I select "pending" from "info_state_event"
     And I press "Update state"
     Then I should see "pending"
 
   Scenario: show appropriate classes for state css container in info lists
-    Given an info exists
-     And a pending_info exists
-     And an published_info exists
+    Given an info exists with category: the category
+    And a pending_info exists
+    And an published_info exists
     When I go to the infos page
     Then I should see "draft" within "td.draft"
     And I should see "pending" within "td.pending"

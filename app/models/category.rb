@@ -2,6 +2,8 @@ class Category < ActiveRecord::Base
   attr_accessible :name, :parent_id
   validates :name, :presence => true, :uniqueness => true
 
+  has_many :infos, :dependent => :destroy
+
   has_ancestry
 end
 
