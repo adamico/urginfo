@@ -1,0 +1,22 @@
+- title @category.name
+
+- breadcrumb(@category)
+
+= link_to 'Edit', edit_category_path(@category)
+\|
+= link_to "Destroy", @category, :confirm => 'Are you sure?', :method => :delete
+\|
+= link_to 'Back', categories_path
+
+%p= link_to "Create child", new_category_path(:parent => @category)
+
+- unless @category.children.empty?
+  %ul
+    - @category.children.each do |child|
+      %li
+        %table.children
+          %tr
+            %td
+              = link_to_if(!child.children.empty?, child.name, child) do
+                = link_to child.name, "#"
+            %td= link_to "Edit this child", edit_category_path(child)

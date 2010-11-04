@@ -1,7 +1,5 @@
 - title @info.name
 
-- breadcrumb(@info)
-
 %p
   = link_to "Edit", edit_info_path(@info)
   |
@@ -15,16 +13,3 @@
     = f.collection_select :state_event, @info.state_transitions,
       :event, :human_to_name, :include_blank => @info.human_state_name
     = f.submit "Update state"
-
-- unless @info.children.empty?
-  %ul
-    - @info.children.each do |child|
-      %li
-        %table.children
-          %tr
-            %td
-              = link_to_if(!child.children.empty?, child.name, child) do
-                = link_to child.name, "#"
-            %td= link_to "Edit this child", edit_info_path(child)
-
-%p= link_to "Create child", new_info_path(:parent => @info)

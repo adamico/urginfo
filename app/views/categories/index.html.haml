@@ -1,0 +1,18 @@
+- title "Categories"
+
+%table
+  %tr
+    %th Name
+    %th Ancestors
+    %th
+    %th
+
+  - @categories.each do |category|
+    %tr
+      %td= link_to category.name, category
+      %td.breadcrumb
+        - breadcrumb(category, with_self = false)
+      %td= link_to 'Edit', edit_category_path(category)
+      %td= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to 'New Category', new_category_path

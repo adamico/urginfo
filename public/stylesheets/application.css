@@ -60,13 +60,14 @@ a {
   .error_messages ul {
     margin: 0; }
 
-table.infos {
+table {
   border-collapse: collapse; }
-  table.infos td.state {
-    background: #aaaaaa; }
-  table.infos td.draft {
-    color: yellow; }
-  table.infos td.published {
-    color: lime; }
-  table.infos td.pending {
-    color: red; }
+
+table.infos td.state {
+  background: #aaaaaa; }
+table.infos td.draft {
+  color: yellow; }
+table.infos td.published {
+  color: lime; }
+table.infos td.pending {
+  color: red; }

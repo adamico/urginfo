@@ -6,17 +6,6 @@
         - @info.errors.full_messages.each do |msg|
           %li= msg
 
-  - if Rails.env.development?
-    %pre.debug_dump
-      - if @parent
-        = "Parent is '#{@parent.name}'"
-      - else
-        Root node
-  .field
-    = f.label :parent_id, "Parent"
-    - infos_array = Info.all
-    = f.select :parent_id, options_from_collection_for_select(infos_array, :id, :name, @parent ? @parent.id : nil), :include_blank => "select parent"
-
   .field
     = f.label :state
     = f.collection_select :state_event, @info.state_transitions,

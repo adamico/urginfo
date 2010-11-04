@@ -10,17 +10,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101028142006) do
+ActiveRecord::Schema.define(:version => 20101104133141) do
 
-  create_table "infos", :force => true do |t|
+  create_table "categories", :force => true do |t|
     t.string   "name"
-    t.string   "state"
     t.string   "ancestry"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "infos", ["ancestry"], :name => "index_infos_on_ancestry"
+  add_index "categories", ["ancestry"], :name => "index_categories_on_ancestry"
+
+  create_table "infos", :force => true do |t|
+    t.string   "name"
+    t.string   "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "category_id"
+  end
 
   create_table "infos_items", :force => true do |t|
     t.integer "item_id"

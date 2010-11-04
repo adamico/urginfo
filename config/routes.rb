@@ -1,4 +1,6 @@
 Urginfo::Application.routes.draw do
+  resources :categories
+
   resources :infos
 
   root :to => "infos#index"
