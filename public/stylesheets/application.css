@@ -60,6 +60,10 @@ a {
   .error_messages ul {
     margin: 0; }
 
+.fields {
+  border: 1px solid black;
+  padding: 1em; }
+
 table {
   border-collapse: collapse; }
 

@@ -21,3 +21,14 @@
       %tr
         %td= phone.name
         %td= phone.number
+
+- unless @info.locations.empty?
+  %h2 Locations
+  %table
+    - @info.locations.each do |location|
+      %tr
+        %td= location.name
+        %td= location.address
+        %td= location.city
+        %td= location.country
+        %td= location.cp

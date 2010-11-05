@@ -7,12 +7,12 @@
           %li= msg
 
   .field
+    = f.label :name
+    = f.text_field :name
+  .field
     = f.label :state
     = f.collection_select :state_event, @info.state_transitions,
       :event, :human_to_name, :include_blank => @info.human_state_name
-  .field
-    = f.label :name
-    = f.text_field :name
 
   = f.fields_for :phones do |phone_form|
     = phone_form.label :name, "Phone"
@@ -20,7 +20,24 @@
     = phone_form.label :number
     = phone_form.text_field :number
     = phone_form.link_to_remove "Remove phone"
-  = f.link_to_add "Add phone", :phones
+  %p= f.link_to_add "Add phone", :phones
+
+  = f.fields_for :locations do |location_form|
+    .field
+      = location_form.label :name, "Location"
+      = location_form.text_field :name
+    .field
+      = location_form.label :address
+      = location_form.text_field :address
+      = location_form.label :city
+      = location_form.text_field :city
+    .field
+      = location_form.label :country
+      = location_form.text_field :country
+      = location_form.label :cp
+      = location_form.text_field :cp
+    = location_form.link_to_remove "Remove location"
+  %p= f.link_to_add "Add location", :locations
 
   .actions
     = f.submit

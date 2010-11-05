@@ -1,9 +1,11 @@
 class Location < ActiveRecord::Base
   attr_accessible :name, :address, :city, :country, :cp
+  belongs_to :info
 end
 
+
 # == Schema Information
-# Schema version: 20101028142006
+# Schema version: 20101105130437
 #
 # Table name: locations
 #
@@ -15,5 +17,6 @@ end
 #  cp         :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  info_id    :integer
 #
 
