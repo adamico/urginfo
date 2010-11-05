@@ -1,7 +1,8 @@
 class Info < ActiveRecord::Base
   attr_accessible :name, :state_event,
     :phones_attributes,
-    :locations_attributes
+    :locations_attributes,
+    :websites_attributes
 
   validates :name, :presence => true, :uniqueness => true
 
@@ -14,6 +15,8 @@ class Info < ActiveRecord::Base
   accepts_nested_attributes_for :phones, :allow_destroy => true,
     :reject_if => proc { |attrs| attrs.all? {|k, v| v.blank?} }
   accepts_nested_attributes_for :locations, :allow_destroy => true,
+    :reject_if => proc { |attrs| attrs.all? {|k, v| v.blank?} }
+  accepts_nested_attributes_for :websites, :allow_destroy => true,
     :reject_if => proc { |attrs| attrs.all? {|k, v| v.blank?} }
 
   state_machine :initial => :draft do

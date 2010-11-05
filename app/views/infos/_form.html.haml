@@ -39,5 +39,15 @@
     = location_form.link_to_remove "Remove location"
   %p= f.link_to_add "Add location", :locations
 
+  = f.fields_for :websites do |website_form|
+    .field
+      = website_form.label :name, "Website"
+      = website_form.text_field :name
+    .field
+      = website_form.label :url
+      = website_form.text_field :url
+    = website_form.link_to_remove "Remove website"
+  %p= f.link_to_add "Add website", :websites
+
   .actions
     = f.submit

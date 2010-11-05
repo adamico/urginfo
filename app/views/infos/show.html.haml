@@ -32,3 +32,11 @@
         %td= location.city
         %td= location.country
         %td= location.cp
+
+- unless @info.websites.empty?
+  %h2 Websites
+  %table
+    - @info.websites.each do |website|
+      %tr
+        %td= website.name
+        %td= website.url
