@@ -1,4 +1,4 @@
-= form_for [@category, @info] do |f|
+= nested_form_for [@category, @info] do |f|
   - if @info.errors.any?
     #error_explanation
       %h2= "#{pluralize(@info.errors.count, "error")} prohibited this info from being saved:"
@@ -13,5 +13,14 @@
   .field
     = f.label :name
     = f.text_field :name
+
+  = f.fields_for :phones do |phone_form|
+    = phone_form.label :name, "Phone"
+    = phone_form.text_field :name
+    = phone_form.label :number
+    = phone_form.text_field :number
+    = phone_form.link_to_remove "Remove phone"
+  = f.link_to_add "Add phone", :phones
+
   .actions
     = f.submit

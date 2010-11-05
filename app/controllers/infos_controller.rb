@@ -25,7 +25,7 @@ class InfosController < ApplicationController
     @info = @category.infos.build(params[:info])
     if @info.save
       flash[:notice] = "Successfully created info."
-      redirect_to category_path(@info.category)
+      redirect_to @info
     else
       render :action => 'new'
     end
@@ -39,7 +39,7 @@ class InfosController < ApplicationController
     @info = Info.find(params[:id])
     if @info.update_attributes(params[:info])
       flash[:notice] = "Successfully updated info."
-      redirect_to category_path(@info.category)
+      redirect_to @info
     else
       render :action => 'edit'
     end

@@ -1,12 +1,15 @@
 class Info < ActiveRecord::Base
-  attr_accessible :name, :state_event
+  attr_accessible :name, :state_event, :phones_attributes
   validates :name, :presence => true, :uniqueness => true
 
   belongs_to :category
 
-  #has many polymorph section
-  has_many_polymorphs :items, :from => [:phones, :locations, :websites],
-    :dependent => :destroy
+  has_many :phones
+  has_many :locations
+  has_many :websites
+
+  accepts_nested_attributes_for :phones, :allow_destroy => true,
+    :reject_if => proc { |attrs| attrs.all? {|k, v| v.blank?} }
 
   state_machine :initial => :draft do
     #TODO add one or more date fields for infos validity duration calculations

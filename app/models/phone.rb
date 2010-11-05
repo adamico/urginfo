@@ -1,5 +1,6 @@
 class Phone < ActiveRecord::Base
   attr_accessible :name, :number
+  belongs_to :info
 end
 
 # == Schema Information

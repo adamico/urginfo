@@ -13,3 +13,11 @@
     = f.collection_select :state_event, @info.state_transitions,
       :event, :human_to_name, :include_blank => @info.human_state_name
     = f.submit "Update state"
+
+- unless @info.phones.empty?
+  %h2 Phones
+  %table
+    - @info.phones.each do |phone|
+      %tr
+        %td= phone.name
+        %td= phone.number
