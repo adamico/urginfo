@@ -1,4 +1,10 @@
 GIT
+  remote: git@github.com:adamico/nested_form.git
+  revision: 5d8054c05da3c20ff828d44041706c3d36ae86dc
+  specs:
+    nested_form (0.0.0)
+
+GIT
   remote: http://github.com/jystewart/has_many_polymorphs.git
   revision: 36f15d24ca4200f657a5203d9fc0253b58477705
   specs:
@@ -203,6 +209,7 @@ DEPENDENCIES
   launchy
   meta_search
   meta_where
+  nested_form!
   nifty-generators
   pg
   pickle
