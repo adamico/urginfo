@@ -66,6 +66,14 @@ a {
 
 table {
   border-collapse: collapse; }
+  table td {
+    margin-left: 1em;
+    padding-left: 1em; }
+
+table.items th {
+  text-align: right; }
+  table.items th:after {
+    content: " : "; }
 
 table.infos td.state {
   background: #aaaaaa; }

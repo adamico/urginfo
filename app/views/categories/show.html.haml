@@ -1,6 +1,6 @@
 - title @category.name
 
-- breadcrumb(@category)
+- breadcrumb(@category, with_self = false)
 
 %p
   = link_to 'Edit', edit_category_path(@category)

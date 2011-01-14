@@ -37,7 +37,7 @@ Feature: manage categories
     Given an category exists with name: "parent"
     And another category exists with parent: the category, name: "child"
     When I go to the 2nd category page
-    Then I should see "parent > child"
+    Then I should see "parent"
 
   Scenario: show breadcrumb without self in categories list
     Given an category exists with name: "parent"

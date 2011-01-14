@@ -1,11 +1,12 @@
 - title @info.name
 
 %p
+  - breadcrumb(@info.category)
+
+%p
   = link_to "Edit", edit_info_path(@info)
   |
   = link_to "Destroy", @info, :confirm => 'Are you sure?', :method => :delete
-  |
-  = link_to "Back", category_infos_path(@info.category)
 
 = form_for @info do |f|
   .field
@@ -16,18 +17,18 @@
 
 - unless @info.phones.empty?
   %h2 Phones
-  %table
+  %table.items
     - @info.phones.each do |phone|
       %tr
-        %td= phone.name
+        %th= phone.name
         %td= phone.number
 
 - unless @info.locations.empty?
   %h2 Locations
-  %table
+  %table.items
     - @info.locations.each do |location|
       %tr
-        %td= location.name
+        %th= location.name
         %td= location.address
         %td= location.city
         %td= location.country
@@ -35,8 +36,8 @@
 
 - unless @info.websites.empty?
   %h2 Websites
-  %table
+  %table.items
     - @info.websites.each do |website|
       %tr
-        %td= website.name
-        %td= website.url
+        %th= website.name
+        %td= auto_link(website.url)

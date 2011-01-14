@@ -73,6 +73,15 @@ a
 
 table
   border-collapse: collapse
+  td
+    margin-left: 1em
+    padding-left: 1em
+
+table.items
+  th
+    text-align: right
+    &:after
+      content: " : "
 
 table.infos
   td.state
