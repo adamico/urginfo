@@ -9,6 +9,8 @@
   \|
   = link_to 'Back', categories_path
 
+= raw textilize @category.comment
+
 - unless @category.children.empty?
   %table.children
     - @category.children.each do |child|

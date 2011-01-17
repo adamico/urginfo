@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-  attr_accessible :name, :parent_id
+  attr_accessible :name, :parent_id, :comment
   validates :name, :presence => true, :uniqueness => true
 
   has_many :infos, :dependent => :destroy
